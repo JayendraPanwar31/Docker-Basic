@@ -5,4 +5,4 @@ def sum(a,b):
 a=1
 b=2
 result = sum(a,b)
-print("sum")
+print("The sum of two number is :",result)
