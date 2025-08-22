@@ -9,6 +9,11 @@ COPY . /app
 
 # Install any necessary dependencies (if any)
 # For example: RUN pip install some-library
+RUN pip install debugpy
+
+# Expose the port that the debugger will use
+EXPOSE 8080
 
 # Run the Python script when the container starts
-CMD ["python", "App.py"]
+# Start the program with debugger support
+CMD ["python3", "-m", "debugpy", "--listen", "0.0.0.0:8080", "--wait-for-client", "App.py"]
