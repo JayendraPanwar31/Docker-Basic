@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+</head>
+<body>
+    <h1>Enter two numbers to calculate their sum</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="number" name="num1" placeholder="Enter first number" required>
+        <input type="number" name="num2" placeholder="Enter second number" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if sum_result is not none %}
+        <h3>The sum is: {{ sum_result }}</h3>
+    {% endif %}
+</body>
+</html>
