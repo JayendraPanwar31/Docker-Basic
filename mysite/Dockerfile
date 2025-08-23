@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Set environment variables
-ENV PYTHONUNBUFFERED = 1
+ENV PYTHONUNBUFFERED=1
 
 # Create and set the working directory
 WORKDIR /app
