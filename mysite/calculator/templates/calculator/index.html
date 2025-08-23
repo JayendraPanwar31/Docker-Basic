@@ -1,22 +1,89 @@
-<!DOCTYPE html>
-{% csrf_token %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sum Calculator</title>
 </head>
 <body>
     <h1>Enter two numbers to calculate their sum</h1>
-    <form method="POST">
+
+    <form method="post">
         {% csrf_token %}
-        <input type="number" name="num1" placeholder="Enter first number" required>
-        <input type="number" name="num2" placeholder="Enter second number" required>
+        <input type="number" name="num1" placeholder="Enter first number" required step="any">
+        <input type="number" name="num2" placeholder="Enter second number" required step="any">
         <button type="submit">Submit</button>
     </form>
 
-    {% if sum_result is not none %}
+    {% if sum_result|default_if_none:'' != '' %}
         <h3>The sum is: {{ sum_result }}</h3>
     {% endif %}
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome <b></b>Jayendra Panwar</b></h1>
+    </header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="hero">
+        <h2>Learning Series</h2>
+        <p>Learning-> Docker,Kubernetes,Azure Container App,Azure Container Instance, Azure Kubernetes,Git,GitHub Actions</p>
+    </div>
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>
