@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-0l0adtoqkc*cp+&6^-1zmb89(9t^r-o!@n53bk1*$e38(!*j(9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -38,6 +38,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "calculator",
+]
+
+CSRF_COOKIE_SECURE = False  # Ensures CSRF cookie is only sent over HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'Lax'  # Or 'None' if you're doing cross-origin requests
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',  # Add localhost for local testing
+    'https://localhost:8000', # Add the HTTPS version if you use it
+    # Add any other trusted origins here if needed (like your production domain)
 ]
 
 MIDDLEWARE = [

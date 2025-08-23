@@ -1,25 +1,23 @@
-# Use the official Python image from Docker Hub
+# Use official Python image from Docker Hub
 FROM python:3.9-slim
 
-# Set environment variables to avoid Python buffering
-ENV PYTHONUNBUFFERED=1
+# Set environment variables
+ENV PYTHONUNBUFFERED = 1
 
-# Set the working directory in the container
+# Create and set the working directory
 WORKDIR /app
 
-# Copy the requirements file to the container and install the dependencies
+# Copy the requirements.txt into the container
 COPY requirements.txt /app/
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code to the container
+# Copy the entire project into the container
 COPY . /app/
 
-# Run database migrations before proceeding with the build
-RUN python manage.py migrate --noinput
-
-# Expose the port that Django runs on
+# Expose port 8000 for Django to run
 EXPOSE 8000
 
-# Run the Django development server
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Run Django migrations and start Gunicorn
+CMD ["gunicorn", "mysite.wsgi:application", "--bind", "0.0.0.0:8000"]
