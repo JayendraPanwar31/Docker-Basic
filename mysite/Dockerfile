@@ -8,7 +8,8 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Copy the requirements.txt into the container
-COPY ./mysite/requirements.txt /app/
+# Change it to ./mysite/requirements.txt /app/ --to use github Actions
+COPY requirements.txt /app/ 
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
